@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule | Frog Empire Wrestling Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/logo-badge.png" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" /></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedule.html" class="active">Schedule</a></li>
+      <li><a href="memberships.html">Memberships</a></li>
+      <li><a href="https://www.frogempirefoundation.org" target="_blank">Non-Profit</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" class="btn btn-gear">Gear Store</a></li>
+      <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Schedule</span></div>
+    <p class="section-label">Practice &amp; Events</p>
+    <h1>Schedule <span class="text-red">&amp; Calendar</span></h1>
+    <p>Book classes online or check upcoming tournaments. All times subject to change — confirm with coaches.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="schedule-tabs">
+      <button class="tab-btn active" data-tab="tab-interactive">📅 Interactive Schedule (Book Classes)</button>
+      <button class="tab-btn" data-tab="tab-tournaments">🏆 Tournament Schedule</button>
+    </div>
+
+    <!-- INTERACTIVE SCHEDULE -->
+    <div class="schedule-panel active" id="tab-interactive">
+      <p style="color:#888; font-size:0.95rem; margin-bottom:28px;">Use the widget below to browse available classes and book your spot directly. Current season: <strong style="color:var(--red);">Olympic Season (March 15 – July 18)</strong></p>
+
+      <!-- WellnessLiving Widget -->
+      <div style="background:var(--gray-dark); padding:8px; border:1px solid rgba(255,255,255,0.07);">
+        <script type="module" src="https://widgets.wellnessliving.com/schedule/widget.js"></script>
+        <wl-schedule-widget k_business="728263" k_schema="01991b2b-538e-72c5-8ef6-131e8a2e04bd"></wl-schedule-widget>
+      </div>
+
+      <div style="margin-top:32px; padding:20px 24px; background:var(--gray-dark); border-left:4px solid var(--red);">
+        <h4 style="font-family:var(--font-display); font-size:1rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">📍 Location: 40 Catherwood Rd, Ithaca, NY 14850</h4>
+        <p style="color:#888; font-size:0.9rem;">Schedule changes are announced on Instagram <a href="https://instagram.com/frogempire607" style="color:var(--red);">@frogempire607</a> — follow us for real-time updates.</p>
+      </div>
+    </div>
+
+    <!-- TOURNAMENT SCHEDULE -->
+    <div class="schedule-panel" id="tab-tournaments">
+      <p style="color:#888; font-size:0.95rem; margin-bottom:8px;">Upcoming tournaments and events pulled directly from our Google Calendar. Membership includes tournament access.</p>
+      <p style="color:#555; font-size:0.82rem; margin-bottom:28px;">
+        <!-- HOW TO CONNECT YOUR GOOGLE CALENDAR:
+             1. Open Google Calendar → Settings → your calendar → "Integrate calendar"
+             2. Copy the "Public URL to this calendar" embed src (looks like https://calendar.google.com/calendar/embed?src=YOUR_ID...)
+             3. Paste it into the iframe src attribute below, replacing YOUR_CALENDAR_EMBED_URL
+             4. To make the calendar public: Settings → your calendar → "Access permissions" → check "Make available to public"
+        -->
+      </p>
+
+      <!-- Google Calendar Embed -->
+      <div style="background:var(--gray-dark); padding:4px; border:1px solid rgba(255,255,255,0.07);">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=c_fa1a54912df424319875c6b9275706d9fbc297357b018cc9bf8ee4139774a861%40group.calendar.google.com&ctz=America%2FNew_York"
+          style="border:0; width:100%; height:640px; display:block;"
+          frameborder="0"
+          scrolling="no"
+          title="Frog Empire Tournament Schedule">
+        </iframe>
+      </div>
+
+      <!-- Fallback shown when no URL is set yet -->
+      <div id="calendarPlaceholder" style="background:var(--gray-dark); border:1px dashed rgba(255,255,255,0.12); padding:80px 32px; text-align:center; margin-top:-648px; position:relative; z-index:2; display:none;">
+        <p style="font-family:var(--font-display); font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:#444; margin-bottom:12px;">📅 Google Calendar</p>
+        <h3 style="color:#555; margin-bottom:8px;">Tournament Calendar Coming Soon</h3>
+        <p style="color:#444; font-size:0.9rem; max-width:400px; margin:0 auto 24px;">Add your Google Calendar embed URL to the iframe above to display the live tournament schedule here.</p>
+        <a href="contact.html" class="btn btn-red-outline" style="font-size:0.85rem;">Contact Us for Schedule Info</a>
+      </div>
+
+      <div style="margin-top:24px; padding:20px 24px; background:var(--gray-dark); border-left:4px solid var(--red);">
+        <h4 style="font-family:var(--font-display); font-size:1rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Tournament Prep</h4>
+        <p style="color:#888; font-size:0.9rem;">All members receive tournament preparation coaching and coordination support. Questions about a specific event? <a href="contact.html" style="color:var(--red);">Contact us.</a></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="trial-banner">
+  <div class="container">
+    <h2>Not a Member Yet?</h2>
+    <p>Try any program free for 1 week. No commitment, no credit card.</p>
+    <a href="https://www.wellnessliving.com/rs/catalog-view.html?k_business=728263&id_sale=1&k_id=3768697" class="btn btn-outline">Claim Your Free Trial</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" />
+        <p>Building champions on and off the mat.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="https://www.instagram.com/frogempire607" target="_blank">📸</a>
+          <a href="https://www.facebook.com/frogempire607" target="_blank">👥</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#team">Coaches &amp; Staff</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="https://www.frogempirefoundation.org" target="_blank">Non-Profit</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5015943764">(501) 594-3764</a></li>
+          <li><a href="mailto:info@frogempire607.com">info@frogempire607.com</a></li>
+          <li>40 Catherwood Rd, Ithaca NY</li>
+          <li style="margin-top:8px;"><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank">🛒 Gear Store</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Frog Empire LLC. All rights reserved.</p></div>
+  </div>
+</footer>
+<button id="backToTop" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--red);color:white;border:none;cursor:pointer;font-size:1.2rem;opacity:0;transition:opacity 0.3s;z-index:999;">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

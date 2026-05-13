@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Frog Empire Wrestling Academy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/logo-badge.png" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" /></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="about.html">About</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="memberships.html">Memberships</a></li>
+      <li><a href="https://www.frogempirefoundation.org" target="_blank">Non-Profit</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" class="btn btn-gear">Gear Store</a></li>
+      <li class="nav-cta"><a href="contact.html" class="btn btn-primary active">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+    <p class="section-label">Get in Touch</p>
+    <h1>Contact <span class="text-red">Us</span></h1>
+    <p>Questions about membership, scheduling, or the free trial? We'd love to hear from you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div>
+        <h3 style="margin-bottom:32px;">Reach Out</h3>
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Location</h4>
+            <p>40 Catherwood Rd<br>Ithaca, NY 14850</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:5015943764">(501) 594-3764</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:info@frogempire607.com">info@frogempire607.com</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/frogempire607" target="_blank">@frogempire607</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">👥</div>
+          <div>
+            <h4>Facebook</h4>
+            <a href="https://www.facebook.com/frogempire607" target="_blank">facebook.com/frogempire607</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🛒</div>
+          <div>
+            <h4>Gear Store</h4>
+            <a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank">Spartan Combat – Frog Empire</a>
+          </div>
+        </div>
+
+        <div style="margin-top:32px; padding:24px; background:var(--gray-dark); border-left:4px solid var(--red);">
+          <h4 style="font-family:var(--font-display); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">🐸 Free Trial Claim</h4>
+          <p style="font-size:0.9rem; color:#888; margin-bottom:12px;">Try any program free for a full week — no credit card, no commitment.</p>
+          <a href="https://www.wellnessliving.com/rs/catalog-view.html?k_business=728263&id_sale=1&k_id=3768697" class="btn btn-red-outline" style="font-size:0.85rem;">Claim Free Trial Online</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div>
+        <h3 style="margin-bottom:32px;">Send a Message</h3>
+        <form class="contact-form" id="contactForm" action="mailto:info@frogempire607.com" method="POST" enctype="text/plain">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Athlete or parent name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(607) 555-0000" />
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm Interested In</label>
+            <select id="interest" name="interest">
+              <option value="">Select a program...</option>
+              <option value="free-trial">1 Week Free Trial</option>
+              <option value="jr-frogs">Jr Frogs (K–6th Grade)</option>
+              <option value="ms-hs">MS / HS (5th–12th Grade)</option>
+              <option value="sunday">Sunday Funday (All Ages)</option>
+              <option value="private-lesson">Private Lesson</option>
+              <option value="clinic">Clinic</option>
+              <option value="nonprofit">Non-Profit / Scholarship</option>
+              <option value="other">General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us a bit about your athlete — age, experience level, goals..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="section section--dark" style="padding-top:0;">
+  <div class="container">
+    <h3 style="margin-bottom:16px;">How to Find Us</h3>
+    <p style="color:#888; margin-bottom:8px; font-size:0.9rem;">We're located at 40 Catherwood Rd in Ithaca. Look for the Frog Empire signage.</p>
+    <iframe
+      class="map-embed"
+      style="height:400px;"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2930.1!2d-76.5!3d42.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s40+Catherwood+Rd+Ithaca+NY!5e0!3m2!1sen!2sus!4v1"
+      allowfullscreen="" loading="lazy"
+      title="Frog Empire Location">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" />
+        <p>Elite wrestling in Ithaca, NY.</p>
+        <div class="social-links" style="margin-top:16px;">
+          <a href="https://www.instagram.com/frogempire607" target="_blank">📸</a>
+          <a href="https://www.facebook.com/frogempire607" target="_blank">👥</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#team">Coaches &amp; Staff</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="https://www.frogempirefoundation.org" target="_blank">Non-Profit</a></li>
+          <li><a href="faq.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5015943764">(501) 594-3764</a></li>
+          <li><a href="mailto:info@frogempire607.com">info@frogempire607.com</a></li>
+          <li>40 Catherwood Rd, Ithaca NY</li>
+          <li style="margin-top:8px;"><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank">🛒 Gear Store</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Frog Empire LLC. All rights reserved.</p></div>
+  </div>
+</footer>
+<button id="backToTop" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--red);color:white;border:none;cursor:pointer;font-size:1.2rem;opacity:0;transition:opacity 0.3s;z-index:999;">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>
