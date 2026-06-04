@@ -15,37 +15,81 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- Navbar scroll effect ----
   const navbar = document.querySelector('.navbar');
   if (navbar) {
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
+      lastScroll = window.scrollY;
+    }, { passive: true });
   }
 
-  // ---- Mobile nav toggle ----
+  // ---- Mobile nav toggle with backdrop ----
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
+
+  // Create backdrop element
+  const backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  document.body.appendChild(backdrop);
+
+  function closeMobileNav() {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    backdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMobileNav() {
+    navToggle.classList.add('open');
+    navLinks.classList.add('open');
+    backdrop.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    navToggle.setAttribute('aria-expanded', 'true');
+  }
+
   if (navToggle && navLinks) {
+    navToggle.setAttribute('aria-expanded', 'false');
+
     navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
+      if (navLinks.classList.contains('open')) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
     });
+
     // Close on link click
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', closeMobileNav);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        closeMobileNav();
+      }
     });
   }
 
-  // ---- FAQ Accordion ----
+  // ---- FAQ Accordion with ARIA ----
   document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
       // Close all
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
       // Toggle clicked
-      if (!isOpen) item.classList.add('open');
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
@@ -68,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
@@ -79,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const btn = contactForm.querySelector('button[type="submit"]');
       btn.textContent = 'Sent! We\'ll be in touch.';
-      btn.style.background = '#2a7a2a';
+      btn.style.background = 'var(--success)';
       btn.disabled = true;
       setTimeout(() => {
         btn.textContent = 'Send Message';
@@ -90,13 +134,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ---- Smooth back-to-top ----
+  // ---- Back-to-top ----
   const btt = document.getElementById('backToTop');
   if (btt) {
+    // Remove inline styles that might conflict
+    btt.removeAttribute('style');
+
     window.addEventListener('scroll', () => {
-      btt.style.opacity = window.scrollY > 600 ? '1' : '0';
-      btt.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
-    });
+      btt.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
