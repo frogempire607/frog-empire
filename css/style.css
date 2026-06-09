@@ -356,25 +356,29 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
 
 /* Mobile Nav */
 @media (max-width: 900px) {
+  :root { --nav-height: 60px; }
+  .nav-logo img { height: 44px; }
+  .navbar.scrolled .nav-logo img { height: 40px; }
   .nav-toggle { display: flex; }
   .nav-links {
     position: fixed;
     top: var(--nav-height); left: 0; right: 0;
-    bottom: 0;
     background: var(--black-soft);
     flex-direction: column;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-4) var(--space-6) var(--space-6);
     gap: 0;
     border-top: 2px solid var(--red);
     transform: translateX(100%);
     transition: transform var(--duration-slow) var(--ease-out);
     overflow-y: auto;
+    max-height: calc(100dvh - var(--nav-height));
     z-index: 1001;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
   .nav-links.open { transform: translateX(0); }
   .nav-links a {
-    padding: var(--space-4) 0;
-    font-size: 1.2rem;
+    padding: var(--space-3) var(--space-2);
+    font-size: 1.05rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     width: 100%;
     border-radius: 0;
@@ -382,10 +386,10 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
   }
   .nav-links a:hover, .nav-links a.active { color: var(--white); background: transparent; }
   .nav-links a::after { display: none; }
-  .nav-cta { margin: var(--space-6) 0 0; }
+  .nav-cta { margin: var(--space-4) 0 0; }
   .nav-cta .btn { width: 100%; display: block; text-align: center; }
   /* Gear Store btn full width on mobile */
-  .nav-links .btn-gear { width: 100%; display: block; text-align: center; margin-top: var(--space-2); }
+  .nav-links .btn-gear { width: 100%; display: block; text-align: center; margin-top: var(--space-1); }
 }
 
 /* ===============================
