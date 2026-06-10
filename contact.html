@@ -107,7 +107,7 @@
         <h3 style="margin-bottom:32px;">Send a Message</h3>
         <form class="contact-form" id="contactForm" name="contact" method="POST" action="/contact.html?success=true" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <p class="hidden-honeypot" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" autocomplete="off" tabindex="-1" /></label></p>
           <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" placeholder="Athlete or parent name" required />
