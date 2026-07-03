@@ -22,25 +22,35 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
 <nav class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" />
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="schedule.html">Schedule</a></li>
-      <li><a href="memberships.html">Memberships</a></li>
+      <li class="nav-dropdown">
+        <a href="memberships.html">Memberships<svg class="nav-caret" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="memberships.html">Programs</a></li>
+          <li><a href="memberships.html#privates">Private Lessons</a></li>
+          <li><a href="memberships.html#clinics">Clinics &amp; Camps</a></li>
+        </ul>
+      </li>
       <li><a href="https://www.frogempirefoundation.org" target="_blank" rel="noopener noreferrer">Non-Profit</a></li>
       <li><a href="faq.html">FAQs</a></li>
-      <li><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" class="btn btn-gear">Gear Store</a></li>
+      <li><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" rel="noopener noreferrer" class="btn btn-gear">Gear Store</a></li>
       <li class="nav-cta"><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
     </ul>
   </div>
 </nav>
+
+<main id="main">
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -161,9 +171,9 @@
           <h3>Julian Ramirez</h3>
           <div class="role">Owner &amp; Lead Coach</div>
           <p>Cornell University athlete, minor in Business &amp; Leadership. Julian has been wrestling since age 7 and turned that passion into a mission to develop the next generation of champions in Ithaca.</p>
-          <a href="mailto:info@frogempire607.com" class="coach-email-link">✉ jramirez@frogempire607.com</a>
+          <a href="mailto:jramirez@frogempire607.com" class="coach-email-link">✉ jramirez@frogempire607.com</a>
           <div style="margin-top:12px;">
-            <a href="memberships.html#privates" class="btn btn-red-outline" style="font-size:0.8rem; padding:8px 16px;">Book a Private</a>
+            <a href="memberships.html#privates" class="btn btn-red-outline btn-sm">Book a Private</a>
           </div>
         </div>
       </div>
@@ -221,9 +231,9 @@
           <h3>Sal</h3>
           <div class="role">Head Coach</div>
           <p>Cornell-trained and deeply committed to athlete development. Sal brings high-level technical coaching to every session.</p>
-          <a href="mailto:info@frogempire607.com" class="coach-email-link">✉ sjones@frogempire607.com</a>
+          <a href="mailto:sjones@frogempire607.com" class="coach-email-link">✉ sjones@frogempire607.com</a>
           <div style="margin-top:12px;">
-            <a href="memberships.html#privates" class="btn btn-red-outline" style="font-size:0.8rem; padding:8px 16px;">Book a Private</a>
+            <a href="memberships.html#privates" class="btn btn-red-outline btn-sm">Book a Private</a>
           </div>
         </div>
       </div>
@@ -238,7 +248,7 @@
           <div class="role">Assistant Coach</div>
           <p>Head coach of Ithaca HS, Josh is committed to developing every athlete's technique, mindset, and competitive edge.</p>
           <div style="margin-top:12px;">
-            <a href="memberships.html#privates" class="btn btn-red-outline" style="font-size:0.8rem; padding:8px 16px;">Book a Private</a>
+            <a href="memberships.html#privates" class="btn btn-red-outline btn-sm">Book a Private</a>
           </div>
         </div>
       </div>
@@ -277,6 +287,8 @@
 </div><!-- /panel-team -->
 
 <!-- ===== FOOTER ===== -->
+</main>
+
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -284,8 +296,8 @@
         <img src="images/logo-banner.jpeg" alt="Frog Empire Wrestling Academy" />
         <p>Building champions on and off the mat. Elite wrestling training for youth and high school athletes in Ithaca, NY.</p>
         <div class="social-links" style="margin-top:20px;">
-          <a href="https://www.instagram.com/frogempire607" target="_blank" aria-label="Instagram">📸</a>
-          <a href="https://www.facebook.com/frogempire607" target="_blank" aria-label="Facebook">👥</a>
+          <a href="https://www.instagram.com/frogempire607" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/frogempire607" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.4 21v-6.9h2.3l.35-2.7H13.4V9.7c0-.78.22-1.32 1.34-1.32h1.43V5.97c-.25-.03-1.1-.1-2.08-.1-2.06 0-3.47 1.25-3.47 3.56v1.98H8.3v2.7h2.32V21h2.78z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -294,6 +306,8 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="about.html#team">Coaches &amp; Staff</a></li>
           <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="memberships.html#privates">Private Lessons</a></li>
+          <li><a href="memberships.html#clinics">Clinics &amp; Camps</a></li>
           <li><a href="schedule.html">Schedule</a></li>
           <li><a href="https://www.frogempirefoundation.org" target="_blank" rel="noopener noreferrer">Non-Profit</a></li>
           <li><a href="faq.html">FAQs</a></li>
@@ -305,7 +319,7 @@
           <li><a href="tel:5015943764">(501) 594-3764</a></li>
           <li><a href="mailto:info@frogempire607.com">info@frogempire607.com</a></li>
           <li>40 Catherwood Rd<br>Ithaca, NY 14850</li>
-          <li style="margin-top:8px;"><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" rel="noopener noreferrer">🛒 Gear Store</a></li>
+          <li style="margin-top:8px;"><a href="https://www.icsmerch.com/collections/frog-empire?page=1#cac25b660d0df59da851ec04d2c12018" target="_blank" rel="noopener noreferrer">Gear Store</a></li>
         </ul>
       </div>
     </div>
@@ -315,7 +329,7 @@
   </div>
 </footer>
 
-<button id="backToTop" aria-label="Back to top">↑</button>
+<button id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
 <script src="js/main.js"></script>
 <script>
   // About page tabs

@@ -119,6 +119,26 @@ ul { list-style: none; }
 }
 :focus:not(:focus-visible) { outline: none; }
 
+/* Skip link — hidden until keyboard focus */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  background: var(--red);
+  color: var(--white-pure);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: var(--shadow-lg);
+  transition: top var(--duration-fast) ease;
+}
+.skip-link:focus { top: 12px; }
+
 /* Selection color */
 ::selection { background: var(--red); color: white; }
 
@@ -329,6 +349,70 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 .nav-cta { margin-left: var(--space-3); }
 
+/* ---- Nav dropdown (Memberships → Programs / Private Lessons / Clinics & Camps) ---- */
+.nav-caret {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) ease;
+}
+.nav-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+@media (min-width: 901px) {
+  .nav-dropdown { position: relative; }
+  .nav-dropdown:hover .nav-caret,
+  .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 210px;
+    background: rgba(14, 14, 14, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: var(--space-2);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity var(--duration-fast) ease,
+      transform var(--duration-normal) var(--ease-out),
+      visibility 0s linear var(--duration-normal);
+  }
+  /* Invisible hover bridge between trigger and menu */
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -12px; left: 0; right: 0;
+    height: 12px;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0s;
+  }
+  .nav-dropdown-menu li { width: 100%; }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .nav-dropdown-menu a::after { display: none; }
+  .nav-dropdown-menu a:hover { color: var(--white); background: rgba(255, 255, 255, 0.05); }
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -377,6 +461,7 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
     top: var(--nav-height); left: 0; right: 0;
     background: var(--black-soft);
     flex-direction: column;
+    align-items: stretch;
     padding: var(--space-4) var(--space-6) var(--space-6);
     gap: 0;
     border-top: 2px solid var(--red);
@@ -388,7 +473,9 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
   .nav-links.open { transform: translateX(0); }
+  .nav-links li { width: 100%; }
   .nav-links a {
+    display: block;
     padding: var(--space-3) var(--space-2);
     font-size: 1.05rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -399,9 +486,18 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
   .nav-links a:hover, .nav-links a.active { color: var(--white); background: transparent; }
   .nav-links a::after { display: none; }
   .nav-cta { margin: var(--space-4) 0 0; }
-  .nav-cta .btn { width: 100%; display: block; text-align: center; }
-  /* Gear Store btn full width on mobile */
-  .nav-links .btn-gear { width: 100%; display: block; text-align: center; margin-top: var(--space-1); }
+  .nav-cta .btn { width: 100%; display: block; text-align: center; border-bottom: none; }
+  /* Gear Store btn full width on mobile — keep its own gold border on all sides */
+  .nav-links .btn-gear { width: 100%; display: block; text-align: center; margin-top: var(--space-3); border: 2px solid rgba(240, 192, 64, 0.5); }
+  /* Dropdown flattens to indented sub-links on mobile */
+  .nav-dropdown > a { display: block; }
+  .nav-dropdown .nav-caret { display: none; }
+  .nav-dropdown-menu li { width: 100%; }
+  .nav-dropdown-menu a {
+    padding-left: var(--space-6);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
 }
 
 /* ===============================
@@ -502,7 +598,7 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #666;
+  color: var(--text-muted);
   margin-top: 4px;
 }
 @media (max-width: 900px) {
@@ -829,14 +925,15 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
 .contact-icon {
   width: 40px; height: 40px;
   background: var(--red);
+  color: var(--white-pure);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 1.1rem;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
 }
+.contact-icon svg { width: 18px; height: 18px; }
 .contact-info-item h4 {
   font-family: var(--font-display);
   font-size: 0.8rem;
@@ -881,7 +978,7 @@ p { font-size: 1rem; line-height: 1.7; color: #ccc; }
   background: rgba(26, 26, 26, 0.8);
 }
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--gray-muted); }
+.form-group textarea::placeholder { color: #777; }
 .form-group textarea { resize: vertical; min-height: 120px; }
 .form-group select option { background: var(--gray-dark); }
 @media (max-width: 768px) {
@@ -929,18 +1026,19 @@ footer {
   flex-wrap: wrap;
   gap: 12px;
 }
-.footer-bottom p { font-size: 0.8rem; color: #555; }
+.footer-bottom p { font-size: 0.8rem; color: #888; }
 .social-links { display: flex; gap: var(--space-3); }
 .social-links a {
-  width: 38px; height: 38px;
+  width: 44px; height: 44px;
   background: var(--gray-mid);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   transition: all var(--duration-normal) var(--ease-out);
   border-radius: var(--radius-sm);
 }
+.social-links a svg { width: 18px; height: 18px; }
 .social-links a:hover { background: var(--red); transform: translateY(-2px); box-shadow: var(--shadow-red); }
 @media (max-width: 768px) {
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -977,9 +1075,9 @@ footer {
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #555;
+  color: #999;
 }
-.breadcrumb a { color: #777; }
+.breadcrumb a { color: #888; }
 .breadcrumb a:hover { color: var(--red); }
 .breadcrumb span { color: #333; }
 
@@ -1044,7 +1142,7 @@ footer {
 .team-card-body { padding: 20px; }
 .team-card-body h3 { font-size: 1.2rem; margin-bottom: 4px; }
 .team-card-body .role { color: var(--red); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-display); font-weight: 700; margin-bottom: 12px; }
-.team-card-body p { font-size: 0.875rem; color: #888; line-height: 1.5; }
+.team-card-body p { font-size: 0.875rem; color: #999; line-height: 1.5; }
 
 /* ===============================
    NON-PROFIT
@@ -1117,7 +1215,7 @@ footer {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555;
+  color: #8a8a8a;
   padding: 8px 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   margin-bottom: 12px;
@@ -1151,6 +1249,87 @@ footer {
 @media (max-width: 600px) {
   .schedule-row { grid-template-columns: 1fr; gap: 6px; }
   .schedule-tag { width: fit-content; }
+}
+
+/* Notes above embeds/panels */
+.panel-note {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 680px;
+  margin-bottom: var(--space-6);
+}
+
+/* Framed third-party embeds (booking widget, calendar) */
+.embed-frame {
+  background: var(--gray-dark);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+.embed-frame--light {
+  background: var(--white-pure);
+  border-color: rgba(0,0,0,0.06);
+}
+.calendar-embed {
+  border: 0;
+  width: 100%;
+  height: 640px;
+  display: block;
+  background: var(--white-pure);
+  border-radius: var(--radius-sm);
+}
+@media (max-width: 700px) {
+  .calendar-embed { height: 560px; }
+}
+
+/* Red-accent info callout */
+.info-callout {
+  margin-top: var(--space-8);
+  padding: var(--space-5) var(--space-6);
+  background: var(--gray-dark);
+  border-left: 4px solid var(--red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.info-callout h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+.info-callout p { color: var(--text-muted); font-size: 0.9rem; }
+.info-callout a { color: var(--red); }
+.info-callout a:hover { color: var(--red-light); }
+
+/* Discovery cards (cross-links to clinics/camps & private lessons) */
+.discover-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+.discover-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--gray-dark);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.discover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(176,28,46,0.4);
+}
+.discover-card h3 { font-size: 1.4rem; }
+.discover-card p { color: var(--text-muted); font-size: 0.95rem; flex: 1; }
+@media (max-width: 768px) {
+  .discover-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .discover-card { padding: var(--space-6); }
 }
 
 /* ===============================
@@ -1227,18 +1406,6 @@ footer {
     transparent 20px
   );
 }
-/* Hint label for empty image slots */
-.section-img-bg:not([style*="background-image"])::after {
-  content: '📷 ADD BACKGROUND IMAGE';
-  position: absolute;
-  top: 16px; right: 16px;
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.25);
-  pointer-events: none;
-  z-index: 2;
-}
 
 /* ===============================
    PRIVATES — dark text overrides for light-bg section
@@ -1285,15 +1452,9 @@ footer {
   transition: transform 0.4s ease;
 }
 .clinic-card:hover .clinic-card-img img { transform: scale(1.04); }
-.clinic-card-img.img-placeholder::after {
-  content: '📷  ADD HEADER IMAGE';
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.22);
-  position: absolute;
-  pointer-events: none;
-}
+/* Cards without a header image skip the image band entirely (no empty
+   placeholder box on the live site) */
+.clinic-card-img.img-placeholder { display: none; }
 
 /* Past clinic card tone */
 .clinic-card--past .clinic-card-header { background: #1e1e1e; }
@@ -1310,7 +1471,7 @@ footer {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555;
+  color: #8a8a8a;
   margin-bottom: 10px;
 }
 .clinic-photos-grid {
@@ -1332,30 +1493,10 @@ footer {
   transition: transform 0.3s ease;
 }
 .clinic-photo-slot:hover img { transform: scale(1.06); }
-.clinic-photo-slot.empty {
-  border: 1px dashed rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.clinic-photo-slot.empty::after {
-  content: '+';
-  color: #333;
-  font-size: 1.4rem;
-  font-weight: 300;
-  pointer-events: none;
-}
-/* Uncomment comment hint */
-.clinic-photo-slot.empty::before {
-  content: 'ADD PHOTO';
-  position: absolute;
-  bottom: 4px;
-  font-family: var(--font-display);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  color: #2a2a2a;
-  pointer-events: none;
-}
+/* Empty photo slots are authoring scaffolding — never show them on the
+   live site. The whole gallery block hides until at least one photo exists. */
+.clinic-photo-slot.empty { display: none; }
+.clinic-photos:not(:has(.clinic-photo-slot img)) { display: none; }
 
 /* ===============================
    CLINIC SCHEDULE TABLE
@@ -1391,9 +1532,9 @@ footer {
   color: var(--white);
   white-space: nowrap;
 }
-.clinic-schedule-table td small { display:block; color:#666; font-size:0.82rem; font-weight:400; }
+.clinic-schedule-table td small { display:block; color:#999; font-size:0.82rem; font-weight:400; }
 .clinic-schedule-table .check { color: #4caf50; font-size: 1.1rem; }
-.clinic-schedule-table .no-session { color: #333; }
+.clinic-schedule-table .no-session { color: #777; }
 @media (max-width:520px) {
   .clinic-schedule-table th, .clinic-schedule-table td { padding: 6px 7px; font-size: 0.85rem; }
 }
@@ -1453,7 +1594,13 @@ footer {
 .page-tab-panel { display: none; padding-top: 48px; }
 .page-tab-panel.active { display: block; }
 @media (max-width: 600px) {
-  .page-tabs { gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .page-tabs {
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .page-tabs::-webkit-scrollbar { display: none; }
   .page-tab-btn { padding: 14px 16px; font-size: 0.85rem; white-space: nowrap; flex-shrink: 0; }
 }
 
@@ -1472,7 +1619,7 @@ footer {
   margin: 48px 0 28px;
 }
 .team-section-label:first-child { margin-top: 0; }
-.coach-email-link { display: block; font-size: 0.8rem; color: #666; margin-top: 4px; transition: color 0.2s; }
+.coach-email-link { display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; transition: color 0.2s; }
 .coach-email-link:hover { color: var(--red); }
 .coach-card.clickable { cursor: pointer; }
 .coach-card.clickable .coach-img-wrap { transition: border-color 0.3s, transform 0.3s; }
@@ -1499,7 +1646,7 @@ footer {
   margin-bottom: 10px;
 }
 .cornell-card h4 { font-size: 1rem; margin-bottom: 4px; }
-.cornell-card p { font-size: 0.8rem; color: #666; }
+.cornell-card p { font-size: 0.8rem; color: var(--text-muted); }
 
 /* ===============================
    ENROLLMENT BUTTONS MULTI
@@ -1511,9 +1658,146 @@ footer {
   font-size: 0.88rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #555;
+  color: var(--text-muted);
   margin-bottom: 4px;
   display: block;
+}
+
+/* ===============================
+   PRICE CARDS (program enrollment)
+   =============================== */
+.btn-block { display: block; width: 100%; }
+.btn-sm { font-size: 0.8rem; padding: 8px 16px; }
+
+/* "Coming Soon" badges */
+.badge-soon {
+  font-family: var(--font-display);
+  font-size: 0.6em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--red);
+  color: var(--white-pure);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+}
+.badge-soon--lg {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: baseline;
+  flex-shrink: 0;
+}
+.price-card {
+  background: var(--gray-dark);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+.price-card--featured { border-color: var(--red); }
+.price-card-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+}
+.price-option + .price-option {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+}
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+.price-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: -4px 0 var(--space-2);
+}
+.price-note--save { color: #5fc06d; }
+/* Compact multi-column price summary (Girls section) */
+.price-mini-grid {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.price-mini-grid > div { flex: 1; min-width: 110px; }
+.price-mini-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.price-mini-amount {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--red);
+}
+
+/* Feature lists (program bullet points with red arrows) */
+.feature-list {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--text-secondary);
+}
+.feature-list li::before {
+  content: '→';
+  color: var(--red);
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+/* Two-column program detail layout (text + pricing) */
+.program-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 40px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .program-detail-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* Red-tinted notice banner (discounts, booking notes) */
+.notice-banner {
+  background: rgba(176,28,46,0.08);
+  border: 1px solid rgba(176,28,46,0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+}
+.notice-banner-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+/* Full-bleed variant used as a band between sections */
+.notice-banner--full {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  padding: var(--space-6) 0;
 }
 
 /* ===============================
@@ -1604,7 +1888,7 @@ footer {
   color: var(--white);
   margin-bottom: 4px;
 }
-.tier-desc { font-size: 0.8rem; color: #666; margin-bottom: 12px; }
+.tier-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
 
 /* ===============================
    CLINIC CARDS
@@ -1655,7 +1939,7 @@ footer {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #555;
+  color: #8a8a8a;
   margin-bottom: 2px;
 }
 .clinic-meta-value { font-size: 0.9rem; color: #ccc; }
@@ -1666,7 +1950,7 @@ footer {
   color: var(--red);
   margin: 12px 0 8px;
 }
-.clinic-desc { font-size: 0.875rem; color: #888; margin-bottom: 16px; }
+.clinic-desc { font-size: 0.875rem; color: #999; margin-bottom: 16px; }
 @media (max-width: 600px) {
   .tier-book-row { grid-template-columns: 1fr; }
   .clinic-meta { grid-template-columns: 1fr; }
@@ -1675,6 +1959,12 @@ footer {
 /* ===============================
    RESPONSIVE IMPROVEMENTS
    =============================== */
+
+/* Tablet: 80px column gaps are greedy at 769-1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  [style*="gap:80px"], [style*="gap: 80px"] { gap: 48px !important; }
+  .story-grid, .contact-grid { gap: 48px; }
+}
 
 /* Fix: Location grid on index + FAQ 2-col grid */
 @media (max-width: 768px) {
@@ -1722,7 +2012,9 @@ footer {
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: all var(--duration-normal) var(--ease-out);
   z-index: 999;

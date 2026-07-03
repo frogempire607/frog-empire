@@ -159,6 +159,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ---- Tab buttons: expose active state to assistive tech ----
+  const allTabButtons = document.querySelectorAll('.tab-btn, .page-tab-btn, .sub-tab-btn');
+  function syncTabAria() {
+    allTabButtons.forEach(b => b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false'));
+  }
+  syncTabAria();
+  allTabButtons.forEach(btn => {
+    // run after the click handlers that toggle .active
+    btn.addEventListener('click', () => setTimeout(syncTabAria, 0));
+  });
+
   // ---- Back-to-top ----
   const btt = document.getElementById('backToTop');
   if (btt) {
