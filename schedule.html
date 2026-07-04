@@ -65,12 +65,14 @@
 
     <!-- INTERACTIVE SCHEDULE -->
     <div class="schedule-panel active" id="tab-interactive">
-      <p class="panel-note">Use the widget below to browse available classes and book your spot directly. Current season: <strong style="color:var(--red);">Olympic Season (March 15 – July 18)</strong></p>
+      <p class="panel-note">Browse available classes and book your spot directly on our class calendar. Current season: <strong style="color:var(--red);">Olympic Season (March 15 – July 18)</strong></p>
 
-      <!-- WellnessLiving Widget -->
-      <div class="embed-frame embed-frame--light">
-        <script type="module" src="https://widgets.wellnessliving.com/schedule/widget.js"></script>
-        <wl-schedule-widget k_business="728263" k_schema="01991b2b-538e-72c5-8ef6-131e8a2e04bd"></wl-schedule-widget>
+      <!-- Athletix class calendar (their pages block iframing via X-Frame-Options,
+           so this opens the hosted calendar directly) -->
+      <div class="discover-card">
+        <h3>Class Calendar &amp; Booking</h3>
+        <p>See live class times for every program and reserve your athlete's spot in a couple of taps.</p>
+        <a href="https://athletix-os.com/cal/cmq9xyrjx00008tc4xck1k9qo/78a09d1154aef4da284ce360f5169d81501582d7" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Class Calendar</a>
       </div>
 
       <div class="info-callout">
@@ -124,7 +126,7 @@
   <div class="container">
     <h2>Not a Member Yet?</h2>
     <p>Try any program free for 1 week. No commitment, no credit card.</p>
-    <a href="https://www.wellnessliving.com/rs/catalog-view.html?k_business=728263&id_sale=1&k_id=3768697" class="btn btn-outline">Claim Your Free Trial</a>
+    <a href="https://athletix-os.com/join/frogempire607" class="btn btn-outline">Claim Your Free Trial</a>
   </div>
 </div>
 
