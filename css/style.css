@@ -2101,9 +2101,9 @@ footer {
 }
 
 /* ===============================
-   YEAR MEMBERSHIP PROMO (gold)
+   1 YEAR ANNIVERSARY PROMO (gold)
    =============================== */
-.year-promo {
+.anniv-promo {
   --gold: #e8b23a;
   --gold-light: #ffe08a;
   --gold-deep: #a9761a;
@@ -2118,8 +2118,8 @@ footer {
   border-bottom: 1px solid rgba(232,178,58,0.35);
 }
 /* Oversized ghost word behind the content, matching .trial-banner */
-.year-promo::before {
-  content: '1 YEAR';
+.anniv-promo::before {
+  content: 'YEAR ONE';
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -2131,8 +2131,8 @@ footer {
   white-space: nowrap;
   pointer-events: none;
 }
-.year-promo-inner { position: relative; z-index: 1; }
-.year-promo-eyebrow {
+.anniv-promo-inner { position: relative; z-index: 1; }
+.anniv-promo-eyebrow {
   display: inline-block;
   font-family: var(--font-display);
   font-size: 0.8rem;
@@ -2146,7 +2146,7 @@ footer {
   box-shadow: 0 4px 20px rgba(232,178,58,0.35);
   margin-bottom: var(--space-5);
 }
-.year-promo-title {
+.anniv-promo-title {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(2.2rem, 6vw, 4rem);
@@ -2164,29 +2164,30 @@ footer {
   0%   { background-position: 120% 0; }
   100% { background-position: -120% 0; }
 }
-.year-promo-sub {
+.anniv-promo-sub {
   color: var(--text-secondary);
   font-size: 1.05rem;
   max-width: 620px;
   margin: var(--space-4) auto 0;
 }
-.year-promo-cards {
+.anniv-promo-cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-5);
   margin: var(--space-10) 0;
 }
-.year-promo-card {
-  flex: 1 1 260px;
-  max-width: 320px;
+.anniv-promo-card {
+  flex: 1 1 280px;
+  max-width: 360px;
+  text-align: left;
   background: rgba(232,178,58,0.06);
   border: 1px solid rgba(232,178,58,0.3);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: inset 0 1px 0 rgba(255,224,138,0.15);
 }
-.year-promo-plan {
+.anniv-promo-plan {
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
@@ -2195,36 +2196,43 @@ footer {
   color: var(--gold-light);
   margin-bottom: var(--space-3);
 }
-.year-promo-price {
+.anniv-promo-price {
   font-family: var(--font-display);
   font-size: 3.2rem;
   font-weight: 900;
   line-height: 1;
   color: var(--gold);
 }
-.year-promo-price span {
+.anniv-promo-price span {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-muted);
   letter-spacing: 0.05em;
 }
-.year-promo-compare {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: var(--space-2);
-}
-.year-promo-save {
-  display: inline-block;
-  margin-top: var(--space-3);
-  font-family: var(--font-display);
+.anniv-promo-note {
   font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-top: var(--space-3);
+}
+.anniv-promo-tag {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #1a1206;
   background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-  padding: 4px 12px;
+  padding: 3px 12px;
   border-radius: var(--radius-full);
+}
+/* The headline offer gets a brighter frame */
+.anniv-promo-card--feature {
+  background: rgba(232,178,58,0.12);
+  border-color: var(--gold);
+  box-shadow: 0 8px 36px rgba(232,178,58,0.2), inset 0 1px 0 rgba(255,224,138,0.25);
 }
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
@@ -2237,16 +2245,16 @@ footer {
   box-shadow: 0 10px 36px rgba(232,178,58,0.55);
   color: #1a1206;
 }
-.year-promo-fine {
+.anniv-promo-fine {
   color: var(--text-muted);
   font-size: 0.85rem;
   margin-top: var(--space-4);
 }
 @media (max-width: 600px) {
-  .year-promo::before { font-size: 7rem; }
-  .year-promo-card { max-width: none; }
+  .anniv-promo::before { font-size: 7rem; }
+  .anniv-promo-card { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .year-promo-title { animation: none; background-position: 50% 0; }
+  .anniv-promo-title { animation: none; background-position: 50% 0; }
   .btn-gold:hover { transform: none; }
 }
