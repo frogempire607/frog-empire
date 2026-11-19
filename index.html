@@ -221,6 +221,80 @@
 
 <div class="stripe"></div>
 
+<!-- ===== ANNOUNCEMENTS =====
+     HOW TO UPDATE: each schedule change is one <li class="announce-item">.
+     data-until="YYYY-MM-DD" hides the item automatically the day after that date.
+     Tags: announce-tag--off (no practice), announce-tag--on (practice on / changed times).
+     ===== -->
+<section class="section announce" id="announcements" aria-labelledby="announceTitle">
+  <div class="container">
+    <p class="section-label">Announcements</p>
+    <h2 class="section-title" id="announceTitle">What's Coming Up</h2>
+
+    <div class="announce-grid">
+      <!-- Schedule changes -->
+      <div class="announce-card announce-card--schedule fade-up">
+        <h3 class="announce-card-title">Canceled Practices &amp; Changed Times</h3>
+        <ul class="announce-list">
+          <li class="announce-item" data-until="2026-11-22">
+            <div class="announce-date"><span>Sun</span>Nov 22</div>
+            <div>
+              <span class="announce-tag announce-tag--off">No Practice</span>
+              <p class="announce-text">Finger Lakes Duals</p>
+            </div>
+          </li>
+          <li class="announce-item" data-until="2026-11-25">
+            <div class="announce-date"><span>Wed</span>Nov 25</div>
+            <div>
+              <span class="announce-tag announce-tag--on">Practice Is On &middot; New Times</span>
+              <p class="announce-text">Tadpoles 4:00 &ndash; 4:45 PM<br />Jr Frogs 4:45 &ndash; 5:45 PM</p>
+            </div>
+          </li>
+          <li class="announce-item" data-until="2026-12-20">
+            <div class="announce-date"><span>Sun</span>Dec 20</div>
+            <div>
+              <span class="announce-tag announce-tag--off">No Practice</span>
+            </div>
+          </li>
+        </ul>
+        <p class="announce-empty" hidden>No schedule changes right now. Practice runs as normal.</p>
+        <a href="schedule.html" class="btn btn-red-outline">Full Schedule</a>
+      </div>
+
+      <!-- Camps & clinics -->
+      <div class="announce-card fade-up">
+        <h3 class="announce-card-title">Camps &amp; Clinics</h3>
+        <p class="announce-body">Thanks to everyone who came out to the Empire State Series clinic with Jaxon Joy. More camps and clinics are coming soon.</p>
+        <span class="badge-soon badge-soon--lg">More Coming Soon</span>
+        <a href="memberships.html#clinics" class="btn btn-red-outline">View Camps &amp; Clinics</a>
+      </div>
+
+      <!-- Tournaments -->
+      <div class="announce-card fade-up">
+        <h3 class="announce-card-title">Tournaments</h3>
+        <p class="announce-body">Our tournament schedule is on the way.</p>
+        <span class="badge-soon badge-soon--lg">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Hide announcements whose data-until date has passed (local time).
+  (function () {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    document.querySelectorAll('.announce-item[data-until]').forEach(function (li) {
+      var end = new Date(li.dataset.until + 'T00:00:00');
+      if (!isNaN(end) && end < today) li.remove();
+    });
+    var list = document.querySelector('.announce-card--schedule .announce-list');
+    if (list && !list.children.length) {
+      list.remove();
+      document.querySelector('.announce-card--schedule .announce-empty').hidden = false;
+    }
+  })();
+</script>
+
 <!-- ===== 1 YEAR ANNIVERSARY / NEW PRICING PROMO ===== -->
 <section class="anniv-promo" aria-labelledby="annivPromoTitle">
   <div class="container anniv-promo-inner">
@@ -336,7 +410,7 @@
         <h3>Tadpoles</h3>
         <p>A fun, age-appropriate introduction to movement, coordination, and the basics of wrestling for our youngest athletes. Now enrolling!</p>
         <div class="program-details">
-          <div class="program-detail">Wednesdays 5:30 – 6:15 PM</div>
+          <div class="program-detail">Wednesdays 6:15 – 7:00 PM</div>
           <div class="program-detail">Sundays 1:15 – 2:15 PM</div>
           <div class="program-detail">All experience levels welcome</div>
         </div>

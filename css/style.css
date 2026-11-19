@@ -2260,3 +2260,82 @@ footer {
   .anniv-promo-title { animation: none; background-position: 50% 0; }
   .btn-gold:hover { transform: none; }
 }
+
+/* ===============================
+   HOME — ANNOUNCEMENTS
+   =============================== */
+.announce { background: var(--black-soft); }
+.announce-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+  align-items: stretch;
+}
+.announce-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background: var(--gray-dark);
+  border-top: 4px solid var(--gray);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+.announce-card--schedule { border-top-color: var(--red); }
+.announce-card .btn { margin-top: auto; }
+.announce-card-title {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  margin: 0;
+}
+.announce-body { color: var(--text-secondary); font-size: 1rem; margin: 0; }
+.announce-list { list-style: none; margin: 0; padding: 0; width: 100%; }
+.announce-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--gray-mid);
+}
+.announce-item:first-child { padding-top: 0; }
+.announce-item:last-child { border-bottom: none; }
+.announce-date {
+  flex: 0 0 64px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--white-pure);
+  background: var(--black);
+  border: 1px solid var(--gray-mid);
+  border-radius: var(--radius-sm, 4px);
+  padding: 8px 4px;
+}
+.announce-date span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--red-light);
+  margin-bottom: 4px;
+}
+.announce-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+.announce-tag--off { background: var(--red); color: var(--white-pure); }
+.announce-tag--on { background: var(--success-muted); color: var(--success); border: 1px solid rgba(46,204,113,0.4); }
+.announce-text { color: var(--text-secondary); font-size: 0.98rem; margin: 6px 0 0; line-height: 1.45; }
+.announce-empty { color: var(--text-muted); margin: 0; }
+@media (max-width: 900px) {
+  .announce-grid { grid-template-columns: 1fr; }
+}
