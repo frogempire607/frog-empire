@@ -40,6 +40,7 @@
           <li><a href="memberships.html">Memberships</a></li>
           <li><a href="memberships.html#privates">Private Lessons</a></li>
           <li><a href="memberships.html#clinics">Clinics &amp; Camps</a></li>
+          <li><a href="tyler-lehmann.html">Mindset Training</a></li>
         </ul>
       </li>
       <li><a href="https://www.frogempirefoundation.org" target="_blank" rel="noopener noreferrer">Non-Profit</a></li>
@@ -130,9 +131,142 @@
       </div>
 
       <div class="profile-actions">
-        <a href="contact.html" class="btn btn-primary">Ask About Mindset Coaching</a>
+        <a href="#inquiry" class="btn btn-primary">Ask About Mindset Coaching</a>
         <a href="about.html#team" class="btn btn-outline">Back to Coaches &amp; Staff</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINDSET PRICING -->
+<section class="section section--dark" id="pricing">
+  <div class="container">
+    <p class="section-label">Programs &amp; Pricing</p>
+    <h2 class="section-title">Mindset <span class="text-red">Training</span></h2>
+    <div class="programs-grid">
+        <div class="price-card mindset-card">
+          <h3 class="price-card-title">Group Mindset</h3>
+          <div class="price-amount">$600 / mo</div>
+          <div class="price-note">Total for the group</div>
+          <ul class="feature-list">
+            <li>3&ndash;5 athletes</li>
+            <li>Sessions every other week</li>
+          </ul>
+          <a href="#inquiry" class="btn btn-primary btn-block" data-mindset-program="Group Mindset">Ask About Group Mindset</a>
+        </div>
+        <div class="price-card mindset-card">
+          <h3 class="price-card-title">Individual Mindset</h3>
+          <div class="price-amount">$500 / mo</div>
+          <ul class="feature-list">
+            <li>Sessions every other week</li>
+          </ul>
+          <a href="#inquiry" class="btn btn-primary btn-block" data-mindset-program="Individual Mindset">Ask About Individual Mindset</a>
+        </div>
+        <div class="price-card mindset-card">
+          <h3 class="price-card-title">PEAK</h3>
+          <div class="price-amount">$4,000</div>
+          <div class="price-note">For 12 weeks</div>
+          <ul class="feature-list">
+            <li>Weekly sessions</li>
+            <li>Mindset</li>
+            <li>Nutrition</li>
+            <li>Remote strength &amp; conditioning</li>
+          </ul>
+          <a href="#inquiry" class="btn btn-primary btn-block" data-mindset-program="PEAK">Ask About PEAK</a>
+        </div>
+    </div>
+    <div class="notice-banner mindset-oncall">
+      <p>Every program includes on-call access to Tyler for quick mindset help at any point during the program.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MINDSET INQUIRY FORM -->
+<section class="section" id="inquiry">
+  <div class="container">
+    <div class="mindset-form-wrap">
+      <p class="section-label">Get Started</p>
+      <h2 class="section-title" id="inquiryHeading">Ask About <span class="text-red">Mindset Coaching</span></h2>
+        <form class="contact-form mindset-form" id="mindsetForm" method="post" aria-labelledby="inquiryHeading">
+          <p class="mindset-form-hint">Fields marked <span class="mindset-req">*</span> are required.</p>
+          <div class="form-group">
+            <label for="athleteName">Athlete Name <span class="mindset-req" aria-hidden="true">*</span></label>
+            <input type="text" id="athleteName" name="athleteName" maxlength="100" required />
+          </div>
+          <div class="mindset-form-row">
+          <div class="form-group">
+            <label for="age">Age <span class="mindset-req" aria-hidden="true">*</span></label>
+            <input type="number" id="age" name="age" min="4" max="99" step="1" inputmode="numeric" required />
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight (lbs)</label>
+            <input type="number" id="weight" name="weight" min="20" max="500" step="any" inputmode="decimal" />
+          </div>
+          <div class="form-group">
+            <label for="grade">Grade</label>
+            <select id="grade" name="grade">
+              <option value="">Select a grade...</option>
+              <option>Kindergarten</option>
+              <option>1st</option>
+              <option>2nd</option>
+              <option>3rd</option>
+              <option>4th</option>
+              <option>5th</option>
+              <option>6th</option>
+              <option>7th</option>
+              <option>8th</option>
+              <option>9th</option>
+              <option>10th</option>
+              <option>11th</option>
+              <option>12th</option>
+              <option>College</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="years">Years Wrestling</label>
+            <input type="number" id="years" name="years" min="0" max="60" step="any" inputmode="decimal" />
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="program">Program Interest <span class="mindset-req" aria-hidden="true">*</span></label>
+            <select id="program" name="program" required>
+              <option value="">Select a program...</option>
+              <option value="PEAK">PEAK (12-week program)</option>
+              <option value="Individual Mindset">Individual Mindset</option>
+              <option value="Group Mindset">Group Mindset (3&ndash;5 athletes)</option>
+            </select>
+          </div>
+          <div class="form-group" id="groupMembersField" hidden>
+            <label for="groupMembers">Do you know the other group members? List their full names.</label>
+            <input type="text" id="groupMembers" name="groupMembers" maxlength="500" placeholder="Optional" />
+          </div>
+          <div class="form-group">
+            <label for="parentName">Parent / Guardian Name <span class="mindset-req" aria-hidden="true">*</span></label>
+            <input type="text" id="parentName" name="parentName" maxlength="100" autocomplete="name" required />
+          </div>
+          <div class="mindset-form-row">
+          <div class="form-group">
+            <label for="parentPhone">Parent Phone <span class="mindset-req" aria-hidden="true">*</span></label>
+            <input type="tel" id="parentPhone" name="parentPhone" maxlength="30" autocomplete="tel" placeholder="(607) 555-0123" required />
+          </div>
+          <div class="form-group">
+            <label for="parentEmail">Parent Email <span class="mindset-req" aria-hidden="true">*</span></label>
+            <input type="email" id="parentEmail" name="parentEmail" maxlength="150" autocomplete="email" placeholder="you@email.com" required />
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Other Notes</label>
+            <textarea id="notes" name="notes" maxlength="3000" placeholder="Anything you'd like Tyler to know (optional)"></textarea>
+          </div>
+          <div class="hidden-honeypot" aria-hidden="true">
+            <label for="confirmTopic">Leave this field empty</label>
+            <input type="text" id="confirmTopic" name="confirm_topic" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" disabled>Send to Tyler</button>
+          <div class="mindset-status" id="mindsetStatus" role="status" aria-live="polite"></div>
+          <noscript><p class="mindset-form-hint">This form needs JavaScript. You can also email <a href="mailto:info@frogempire607.com">info@frogempire607.com</a>.</p></noscript>
+        </form>
     </div>
   </div>
 </section>
@@ -181,5 +315,7 @@
 
 <button id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
 <script src="js/main.js"></script>
+<script src="js/config.js"></script>
+<script src="js/mindset-form.js"></script>
 </body>
 </html>
